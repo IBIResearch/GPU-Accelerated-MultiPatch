@@ -1,0 +1,8 @@
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+HDF5 = "f67ccb44-e63f-5c2f-98bd-6dc0ccc4ba2f"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+MPIFiles = "371237a9-e6c1-5201-9adb-3d8cfa78fa9f"
+MPIReco = "e4246700-6248-511e-8146-a1d1f47669d2"
