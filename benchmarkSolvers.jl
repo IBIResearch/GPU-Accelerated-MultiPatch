@@ -34,7 +34,7 @@ end
 if save_results
   using HDF5
   mkpath(joinpath(resultdir, "data"))
-  h5open(joinpath(resultdir, "data", "solver.hd5"), "w") do file
+  h5open(joinpath(resultdir, "data", "solver.h5"), "w") do file
     for (type, solver, iterations) in variants
       write(file, "$(string(solver))/$(string(type))/image", recos[string(solver)])
       write(file, "$(string(solver))/$(string(type))/times", times[string(solver)])
