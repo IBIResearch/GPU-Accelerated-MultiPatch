@@ -11,6 +11,7 @@ params[:minFreq] = 80e3
 params[:sf] = sf
 params[:recChannels] = 1:3
 params[:tfCorrection] = false
+params[:mapping] = collect(1:4)
 
 # Shared reconstruction parameter
 params[:reg] = [L2Regularization(0.01)]
@@ -41,8 +42,3 @@ if save_results
     end
   end
 end
-
-
-#cStatic = reconstructionMultiPatch(sf, meas, bgCorrection=false,
-#			      SNRThresh=2, minFreq=80e3,recChannels=[1,2,3], 
-#                              reg= [L2Regularization(0.01)], iterations=3)

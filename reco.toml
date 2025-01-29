@@ -24,7 +24,7 @@ _type = "RecoPlan{MultiPatchParameters}"
 
             [parameter.reco.opParams.param]
             _module = "MPIReco"
-            _type = "RecoPlan{RegularMultiPatchOperatorParameter}"
+            _type = "RecoPlan{ExplicitMultiPatchParameter}"
 
         [parameter.reco.ffPosSF]
         _module = "MPIReco"
