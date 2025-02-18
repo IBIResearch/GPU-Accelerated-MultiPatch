@@ -15,6 +15,7 @@ params[:reg] = [L2Regularization(0.01)]
 params[:solver] = Kaczmarz
 params[:arrayType] = cpu
 params[:iterations] = 1
+params[:mapping] = collect(1:4)
 
 using MPIReco.AbstractImageReconstruction
 plan = loadPlan("./reco.toml", [AbstractImageReconstruction, MPIFiles, MPIReco])
@@ -34,7 +35,6 @@ u_gpu = adapt(gpu, u)
 
 tmp = adjoint(op) * u
 tmp_gpu = adjoint(op_gpu) * u_gpu
-
 @assert isapprox(tmp, Array(tmp_gpu))
 @assert isapprox(op * tmp, Array(op_gpu * tmp_gpu))
 
