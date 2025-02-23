@@ -8,7 +8,7 @@ datadir = downdir                       # From where the measurement and system 
 sm_suffix = "Large" # "Small"           # If the "Large" or "Small" system matrices should be used for reconstructions
 
 ##### Benchmark options #####
-trials = 2                              # How many trials to use in a benchmark 
+trials = 20                             # How many trials to use in a benchmark 
 
 ##### GPU backend #####
 cpu = Array
