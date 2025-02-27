@@ -29,19 +29,20 @@ u = AbstractImageReconstruction.process(algo, algo.params.pre, meas, algo.freqs)
 u = vec(u[:, :, 1]) # just first frame
 
 # Now we adapt and move operator and measurement data to the GPU
-using Adapt
+using Adapt, KernelAbstractions
+
 op_gpu = adapt(gpu, op)
 u_gpu = adapt(gpu, u)
 
 tmp = adjoint(op) * u
 tmp_gpu = adjoint(op_gpu) * u_gpu
+backend = get_backend(tmp_gpu)
 @assert isapprox(tmp, Array(tmp_gpu))
 @assert isapprox(op * tmp, Array(op_gpu * tmp_gpu))
-
 timesForwardCPU = @benchmark $op * $tmp seconds = (60 * 15) samples = trials evals = 1
-timesForwardGPU = @benchmark $op_gpu * $tmp_gpu seconds = (60 * 15) samples = trials evals = 1
 timesAdjointCPU = @benchmark $adjoint(op) * $u seconds = (60 * 15) samples = trials evals = 1
-timesAdjointGPU = @benchmark $adjoint(op_gpu) * $u_gpu seconds = (60 * 15) samples = trials evals = 1
+timesForwardGPU = @benchmark begin $op_gpu * $tmp_gpu; KernelAbstractions.synchronize(backend) end seconds = (60 * 15) samples = trials evals = 1
+timesAdjointGPU = @benchmark begin $adjoint(op_gpu) * $u_gpu; KernelAbstractions.synchronize(backend) end seconds = (60 * 15) samples = trials evals = 1
 
 if save_results
   using HDF5
