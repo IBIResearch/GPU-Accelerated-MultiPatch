@@ -14,7 +14,7 @@ trials = 20                             # How many trials to use in a benchmark
 cpu = Array
 # Which GPU backend should be used for reconstruction
 # For further installation helps consult the documentation of the respective GPU packages:
-# NVIDIA: https://metal.juliagpu.org/
+# NVIDIA: https://cuda.juliagpu.org/
 # Metal:  https://metal.juliagpu.org/ 
 # AMD:    https://amdgpu.juliagpu.org/
 
