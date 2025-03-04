@@ -8,12 +8,15 @@ grid = (49, 49, 28)
 
 params = Dict{Symbol, Any}()
 # Measurement and system matrix loading/preprocessing
-params[:SNRThresh] = 2
+params[:SNRThresh] = SNRThresh
 params[:minFreq] = 80e3
 params[:sf] = sf
 params[:recChannels] = 1:3
 params[:tfCorrection] = false
 params[:mapping] = collect(1:4)
+params[:numAverages] = 5
+params[:frames] = 1:5
+params[:numAverages] = 5
 
 
 params[:reg] = [L2Regularization(0.01)]

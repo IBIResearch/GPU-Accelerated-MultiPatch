@@ -10,7 +10,7 @@ if isfile(operatorfile)
   fig = Figure(backgroundcolor = :transparent)
 
   h5open(operatorfile) do file
-    backends = fill("CuArray", 3) # keys(file)
+    backends = keys(file)
     backendMap = Dict(
       "CuArray" => "CUDA",
       "MtlArray" => "Metal",

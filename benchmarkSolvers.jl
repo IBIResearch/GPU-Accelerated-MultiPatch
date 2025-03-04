@@ -6,17 +6,20 @@ meas = MPIFile(joinpath(datadir, "measStatic.mdf"))
 
 params = Dict{Symbol, Any}()
 # Measurement and system matrix loading/preprocessing
-params[:SNRThresh] = 2
+params[:SNRThresh] = SNRThresh
 params[:minFreq] = 80e3
 params[:sf] = sf
 params[:recChannels] = 1:3
 params[:tfCorrection] = false
 params[:mapping] = collect(1:4)
+params[:frames] = 1:5
+params[:numAverages] = 5
+
 
 # Shared reconstruction parameter
 params[:reg] = [L2Regularization(0.01)]
 
-variants = [(cpu, Kaczmarz, 3), (gpu, CGNR, 30)]
+variants = [(gpu, CGNR, 30)]
 recos = Dict{String, Array{Float32, 3}}()
 times = Dict{String, Vector{Float32}}()
 for (type, solver, iterations) in variants

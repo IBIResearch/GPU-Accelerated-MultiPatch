@@ -18,7 +18,7 @@ _type = "RecoPlan{MultiPatchParameters}"
         _type = "RecoPlan{SNRThresholdFrequencyFilterParameter}"
 
         [parameter.reco.opParams]
-        maxsize = 1
+        maxsize = 2
         _module = "AbstractImageReconstruction"
         _type = "RecoPlan{ProcessResultCache}"
 
@@ -31,20 +31,28 @@ _type = "RecoPlan{MultiPatchParameters}"
         _type = "RecoPlan{DefaultFocusFieldPositions}"
 
         [parameter.reco.weightingParams]
-        _module = "MPIReco"
-        _type = "RecoPlan{RowNormWeightingParameters}"
+        _module = "AbstractImageReconstruction"
+        _type = "RecoPlan{ProcessResultCache}"
+
+            [parameter.reco.weightingParams.param]
+            _module = "MPIReco"
+            _type = "RecoPlan{RowNormWeightingParameters}"
 
         [parameter.reco.solverParams]
         _module = "MPIReco"
         _type = "RecoPlan{ElaborateSolverParameters}"
 
     [parameter.pre]
-    _module = "MPIReco"
-    _type = "RecoPlan{CommonPreProcessingParameters}"
+    _module = "AbstractImageReconstruction"
+    _type = "RecoPlan{ProcessResultCache}"
 
-        [parameter.pre.bgParams]
+        [parameter.pre.param]
         _module = "MPIReco"
-        _type = "RecoPlan{NoBackgroundCorrectionParameters}"
+        _type = "RecoPlan{CommonPreProcessingParameters}"
+
+            [parameter.pre.param.bgParams]
+            _module = "MPIReco"
+            _type = "RecoPlan{NoBackgroundCorrectionParameters}"
 
     [parameter.post]
     _module = "MPIReco"

@@ -6,7 +6,7 @@ meas = MPIFile(joinpath(datadir, "measStatic.mdf"))
 
 # We do a reoncstruction with one iteration and then retrieve the operator from the algortihm struct
 params = Dict{Symbol, Any}()
-params[:SNRThresh] = 2
+params[:SNRThresh] = SNRThresh
 params[:minFreq] = 80e3
 params[:sf] = sf
 params[:recChannels] = 1:3
@@ -16,6 +16,9 @@ params[:solver] = Kaczmarz
 params[:arrayType] = cpu
 params[:iterations] = 1
 params[:mapping] = collect(1:4)
+params[:frames] = 1:5
+params[:numAverages] = 5
+
 
 using MPIReco.AbstractImageReconstruction
 plan = loadPlan("./reco.toml", [AbstractImageReconstruction, MPIFiles, MPIReco])

@@ -8,7 +8,7 @@ grid = (49, 49, 28)
 
 params = Dict{Symbol, Any}()
 # Measurement and system matrix loading/preprocessing
-params[:SNRThresh] = 2
+params[:SNRThresh] = SNRThresh
 params[:minFreq] = 80e3
 params[:sf] = sf
 params[:recChannels] = 1:3
@@ -16,6 +16,8 @@ params[:tfCorrection] = false
 params[:mapping] = collect(1:4)
 params[:iterations] = 30
 params[:iterationsCG] = 4
+params[:frames] = 1:5
+params[:numAverages] = 5
 params[:rho] = 1.0
 
 variants = [("L2", [L2Regularization(0.3)]), ("L1", [L1Regularization(0.5)]), ("TV+L1",  [TVRegularization(0.1; shape = grid), L1Regularization(0.3)])]

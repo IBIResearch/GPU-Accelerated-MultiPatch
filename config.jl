@@ -7,6 +7,9 @@ downdir = joinpath(@__DIR__(), "data")  # Where the files should be downloaded t
 datadir = downdir                       # From where the measurement and system matrices 
 sm_suffix = "Large" # "Small"           # If the "Large" or "Small" system matrices should be used for reconstructions
 
+SNRThresh = 2                           # SNR threshold to be used for reconstruction. Increase to reduce the GPU usage.
+                                        # Threshold of 3 requires around 8 GB, 5 around 7 GB. Can impact reconstruction results
+
 ##### Benchmark options #####
 trials = 20                             # How many trials to use in a benchmark 
 
